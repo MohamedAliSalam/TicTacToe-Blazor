@@ -1,0 +1,161 @@
+@using System.Security.Cryptography
+
+<h1 class="gameStatus">@Status</h1>
+
+<div class="game-container">
+    @for (int i = 0; i < 3; i++)
+    {
+        <div class="row" id="@i">
+            @for (int j = 0; j < 3; j++)
+            {
+                int row = i;
+                int col = j;
+                <div @onclick="() => BoxClicked(row, col)" id="column-@row-@col">@_board[row, col]</div>
+            }
+        </div>
+    }
+</div>
+
+
+
+<div class="container">
+    <button class="resetBtn" @onclick="ResetGame">Reset Game</button>
+</div>
+
+
+@code {
+    private string[,] _board = new string[3, 3];
+    private bool _gameOver = false;
+    private string Status = "TICTACTOE";
+
+    private void BoxClicked(int row, int col)
+    {
+        if (_gameOver || !string.IsNullOrEmpty(_board[row, col]))
+        {
+            return;
+        }
+
+        _board[row, col] = "X";
+        CheckGameResult();
+
+        if (!_gameOver)
+        {
+            NextTurn();
+            CheckGameResult();
+        }
+    }
+
+    private void NextTurn()
+    {
+        var (row, col) = GetWinningMove("O");
+        if ((row, col) == (null, null))
+        {
+            (row, col) = GetWinningMove("X");
+            if ((row, col) == (null, null))
+            {
+                (row, col) = RandomTurn();
+            }
+        }
+
+        if (row.HasValue && col.HasValue)
+        {
+            _board[row.Value, col.Value] = "O";
+        }
+    }
+
+    private void CheckGameResult()
+    {
+        if (CheckWinner("X"))
+        {
+            Status = "You win!";
+            _gameOver = true;
+        }
+        else if (CheckWinner("O"))
+        {
+            Status = "AI wins!";
+            _gameOver = true;
+        }
+        else if (CheckTie())
+        {
+            Status = "It's a tie!";
+            _gameOver = true;
+        }
+    }
+
+    private (int? row, int? col) GetWinningMove(string player)
+    {
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                if (string.IsNullOrEmpty(_board[row, col]))
+                {
+                    _board[row, col] = player;
+                    if (CheckWinner(player))
+                    {
+                        return (row, col);
+                    }
+                    _board[row, col] = null;
+                }
+            }
+        }
+
+        return (null, null);
+    }
+
+    private (int row, int col) RandomTurn()
+    {
+        var row = RandomNumberGenerator.GetInt32(0, 3);
+        var col = RandomNumberGenerator.GetInt32(0, 3);
+        return _board[row, col] == null ? (row, col) : RandomTurn();
+    }
+
+    private bool CheckWinner(string player)
+    {
+        for (int row = 0; row < 3; row++)
+        {
+            if (_board[row, 0] == player && _board[row, 1] == player && _board[row, 2] == player)
+                return true;
+        }
+
+        for (int col = 0; col < 3; col++)
+        {
+            if (_board[0, col] == player && _board[1, col] == player && _board[2, col] == player)
+                return true;
+        }
+
+        if ((_board[0, 0] == player && _board[1, 1] == player && _board[2, 2] == player) ||
+            (_board[0, 2] == player && _board[1, 1] == player && _board[2, 0] == player))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool CheckTie()
+    {
+        for (int row = 0; row < 3; row++)
+        {
+            for (int col = 0; col < 3; col++)
+            {
+                if (string.IsNullOrEmpty(_board[row, col]))
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private void ResetGame()
+    {
+        
+        _board = new string[3, 3];
+
+        Status = "TICTACTOE";
+        _gameOver = false;
+    }
+
+}
