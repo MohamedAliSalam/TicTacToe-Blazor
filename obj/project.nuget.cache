@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4JbsJ5PwqqSebqPQWPWZFw6NkSeq8T7vBAPbyPzQbWKztz4yx6ohIgqOaXWQJ3UMIXxazbHy1vnuUzeuy7hjxQ==",
+  "dgSpecHash": "115uLflAsWHrXh9nh7jEcw3S1Q4UviH6wIKWupHw/4QR8LM26AMeI+qeugn2wMUbx2gF7ysGvtmdsqDw7vK8hA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\Desktop\\TicTacToe\\TicTacToe.csproj",
+  "projectFilePath": "C:\\Users\\User\\Desktop\\TicTacToe-Blazor\\TicTacToe.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.16\\microsoft.aspnetcore.authorization.7.0.16.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\microsoft.aspnetcore.components\\7.0.16\\microsoft.aspnetcore.components.7.0.16.nupkg.sha512",

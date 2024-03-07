@@ -1,19 +1,19 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\User\\Desktop\\TicTacToe\\bin\\Debug\\net7.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "Id": "C:\\Users\\User\\Desktop\\TicTacToe-Blazor\\bin\\Debug\\net7.0\\wwwroot\\_framework\\blazor.webassembly.js",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\TicTacToe\\obj\\Debug\\net7.0\\compressed\\6q0dtkyikz.gz",
+      "Id": "C:\\Users\\User\\Desktop\\TicTacToe-Blazor\\obj\\Debug\\net7.0\\compressed\\6q0dtkyikz.gz",
       "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\TicTacToe\\wwwroot\\css\\app.css",
+      "Id": "C:\\Users\\User\\Desktop\\TicTacToe-Blazor\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
     {
-      "Id": "C:\\Users\\User\\Desktop\\TicTacToe\\wwwroot\\index.html",
+      "Id": "C:\\Users\\User\\Desktop\\TicTacToe-Blazor\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {

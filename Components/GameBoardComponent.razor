@@ -1,32 +1,56 @@
+
 @using System.Security.Cryptography
 
-<h1 class="gameStatus">@Status</h1>
 
-<div class="game-container">
-    @for (int i = 0; i < 3; i++)
-    {
-        <div class="row" id="@i">
-            @for (int j = 0; j < 3; j++)
-            {
-                int row = i;
-                int col = j;
-                <div @onclick="() => BoxClicked(row, col)" id="column-@row-@col">@_board[row, col]</div>
-            }
-        </div>
-    }
-</div>
+    <h1 class="gameStatus">@Status</h1>
+
+    <div class="game-container">
+        @for (int i = 0; i < 3; i++)
+        {
+            <div class="row" id="@i">
+                @for (int j = 0; j < 3; j++)
+                {
+                    int row = i;
+                    int col = j;
+                    <div @onclick="() => BoxClicked(row, col)" id="column-@row-@col" class="@GetCellClass(row, col)">@_board[row, col]</div>
+                }
+            </div>
+        }
+    </div>
+
+    <div class="container">
+        <button class="resetBtn" @onclick="ResetGame">Reset Game</button>
+    </div>
 
 
-
-<div class="container">
-    <button class="resetBtn" @onclick="ResetGame">Reset Game</button>
-</div>
+    <div class="container">
+        AI
+        <label class="switch">
+        <input type="checkbox" @onchange="TogglePlayerMode">
+        <span class="slider"></span>
+        </label>
+        HUMAN
+    </div>
 
 
 @code {
+    private bool showHomePage = true;
     private string[,] _board = new string[3, 3];
     private bool _gameOver = false;
     private string Status = "TICTACTOE";
+    private (int, int)[] winningCells;
+    private char turn = 'x';
+
+    private bool isAIPlayer = true;
+
+
+
+    private void TogglePlayerMode(ChangeEventArgs e)
+    {
+        isAIPlayer = !(bool)e.Value;
+        Console.WriteLine(isAIPlayer);
+    }
+
 
     private void BoxClicked(int row, int col)
     {
@@ -34,15 +58,40 @@
         {
             return;
         }
-
-        _board[row, col] = "X";
-        CheckGameResult();
-
-        if (!_gameOver)
+        if (isAIPlayer)
         {
-            NextTurn();
+            _board[row, col] = "X";
             CheckGameResult();
+            if (!_gameOver)
+            {
+                NextTurn();
+
+                CheckGameResult();
+            }
         }
+        else
+        {
+            if (!_gameOver)
+            {
+                if (turn == 'x')
+                {
+                    Console.WriteLine("x turn");
+                    _board[row, col] = "X";
+                    turn = 'o';
+                    CheckGameResult();
+                }
+                else if (turn == 'o')
+                {
+                    Console.WriteLine("x turn");
+
+                    _board[row, col] = "O";
+                    turn = 'x';
+
+                    CheckGameResult();
+                }
+            }
+        }
+        
     }
 
     private void NextTurn()
@@ -67,13 +116,15 @@
     {
         if (CheckWinner("X"))
         {
-            Status = "You win!";
+            Status = "X wins!";
             _gameOver = true;
+            winningCells = GetWinningCells("X");
         }
         else if (CheckWinner("O"))
         {
-            Status = "AI wins!";
+            Status = "O wins!";
             _gameOver = true;
+            winningCells = GetWinningCells("O");
         }
         else if (CheckTie())
         {
@@ -93,6 +144,7 @@
                     _board[row, col] = player;
                     if (CheckWinner(player))
                     {
+                        Console.WriteLine(CheckWinner(player));
                         return (row, col);
                     }
                     _board[row, col] = null;
@@ -116,6 +168,9 @@
         {
             if (_board[row, 0] == player && _board[row, 1] == player && _board[row, 2] == player)
                 return true;
+            
+
+                
         }
 
         for (int col = 0; col < 3; col++)
@@ -149,13 +204,66 @@
         return true;
     }
 
-    private void ResetGame()
+    private (int, int)[] GetWinningCells(string player)
     {
-        
-        _board = new string[3, 3];
+        List<(int, int)> Cells = new List<(int, int)>();
 
-        Status = "TICTACTOE";
-        _gameOver = false;
+        for (int row = 0; row < 3; row++)
+        {
+            if (_board[row, 0] == player && _board[row, 1] == player && _board[row, 2] == player)
+            {
+                Cells.Add((row, 0));
+                Cells.Add((row, 1));
+                Cells.Add((row, 2));
+            }
+        }
+
+        for (int col = 0; col < 3; col++)
+        {
+            if (_board[0, col] == player && _board[1, col] == player && _board[2, col] == player)
+            {
+                Cells.Add((0, col));
+                Cells.Add((1, col));
+                Cells.Add((2, col));
+            }
+        }
+
+        if ((_board[0, 0] == player && _board[1, 1] == player && _board[2, 2] == player))
+        {
+            Cells.Add((0, 0));
+            Cells.Add((1, 1));
+            Cells.Add((2, 2));
+        }
+        else if ((_board[0, 2] == player && _board[1, 1] == player && _board[2, 0] == player))
+        {
+            Cells.Add((0, 2));
+            Cells.Add((1, 1));
+            Cells.Add((2, 0));
+        }
+
+        return Cells.ToArray();
     }
 
+    private string GetCellClass(int row, int col)
+    {
+        if (winningCells != null)
+        {
+            foreach (var cell in winningCells)
+            {
+                if (cell.Item1 == row && cell.Item2 == col)
+                {
+                    return "winning-box";
+                }
+            }
+        }
+        return "";
+    }
+
+    private void ResetGame()
+    {
+        _board = new string[3, 3];
+        Status = "TICTACTOE";
+        _gameOver = false;
+        winningCells = null;
+    }
 }

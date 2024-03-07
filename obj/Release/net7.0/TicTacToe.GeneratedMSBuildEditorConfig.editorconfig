@@ -13,31 +13,31 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = TicTacToe
 build_property.RootNamespace = TicTacToe
-build_property.ProjectDir = C:\Users\User\Desktop\TicTacToe\
+build_property.ProjectDir = C:\Users\User\Desktop\TicTacToe-Blazor\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\User\Desktop\TicTacToe
+build_property.MSBuildProjectDirectory = C:\Users\User\Desktop\TicTacToe-Blazor
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/User/Desktop/TicTacToe/App.razor]
+[C:/Users/User/Desktop/TicTacToe-Blazor/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/TicTacToe/Components/GameBoardComponent.razor]
+[C:/Users/User/Desktop/TicTacToe-Blazor/Components/GameBoardComponent.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xHYW1lQm9hcmRDb21wb25lbnQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/TicTacToe/MainLayout.razor]
+[C:/Users/User/Desktop/TicTacToe-Blazor/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/TicTacToe/Pages/Index.razor]
+[C:/Users/User/Desktop/TicTacToe-Blazor/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/User/Desktop/TicTacToe/_Imports.razor]
+[C:/Users/User/Desktop/TicTacToe-Blazor/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
