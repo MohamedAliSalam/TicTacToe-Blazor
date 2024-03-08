@@ -30,8 +30,7 @@
               "RelativeToolTip": "wwwroot\\css\\app.css",
               "ViewState": "AQIAAEIAAAAAAAAAAAAowE0AAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-03-04T16:45:52.519Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-04T16:45:52.519Z"
             },
             {
               "$type": "Document",
@@ -41,7 +40,7 @@
               "RelativeDocumentMoniker": "Components\\GameBoardComponent.razor",
               "ToolTip": "C:\\Users\\User\\Desktop\\TicTacToe-Blazor\\Components\\GameBoardComponent.razor",
               "RelativeToolTip": "Components\\GameBoardComponent.razor",
-              "ViewState": "AQIAAG8AAAAAAAAAAAAAAHwAAAAfAAAA",
+              "ViewState": "AQIAAHAAAAAAAAAAAAAqwHwAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-03-04T10:29:33.628Z",
               "EditorCaption": ""
