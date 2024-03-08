@@ -24,4 +24,6 @@ jobs:
       with:
         folder: release/wwwroot
         BRANCH: gh-pages
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.YOUR_NEW_TOKEN }}
+        clean: true
+        force: true
