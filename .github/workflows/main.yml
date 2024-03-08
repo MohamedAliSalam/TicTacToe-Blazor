@@ -1,0 +1,28 @@
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [ main ]
+jobs:
+  deploy-to-github-pages:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v3.2.0
+      with:
+        dotnet-version: 8.x
+    - name: Publish .NET Core Project
+      run: dotnet publish TicTacToe.csproj -c Release -o release --nologo
+    - name: Change base-tag in index.html from / to TicTacToe-Blazor
+      run: sed -i 's/<base href="\/" \/>/<base href="\/TicTacToe-Blazor\/" \/>/g' release/wwwroot/index.html
+    - name: Add .nojekyll file
+      run: touch release/wwwroot/.nojekyll
+    - name: copy index.html to 404.html
+      run: cp release/wwwroot/index.html release/wwwroot/404.html
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4.4.3
+      with:
+        folder: release/wwwroot
+        BRANCH: gh-pages
+        token: ${{ secrets.GITHUB_TOKEN }}
+        force: true
