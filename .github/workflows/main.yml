@@ -19,10 +19,9 @@ jobs:
       run: touch release/wwwroot/.nojekyll
     - name: copy index.html to 404.html
       run: cp release/wwwroot/index.html release/wwwroot/404.html
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4.4.3
+    - name: Commit wwwroot to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
-        folder: release/wwwroot
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         BRANCH: gh-pages
-        token: ${{ secrets.GITHUB_TOKEN }}
-        force: true
+        FOLDER: release/wwwroot
