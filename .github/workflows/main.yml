@@ -25,5 +25,4 @@ jobs:
         folder: release/wwwroot
         BRANCH: gh-pages
         token: ${{ secrets.YOUR_NEW_TOKEN }}
-        clean: true
-        force: true
+        
