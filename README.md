@@ -1,6 +1,6 @@
 # TicTacToe Blazor Web Assembly
 
-Welcome to the TicTacToe Blazor Web Assembly project! This is a simple implementation of the classic Tic-Tac-Toe game using Blazor Web Assembly. In this version, you'll be challenging an AI opponent in the timeless battle of X's and O's.
+Welcome to the TicTacToe Blazor Web Assembly project! This is a simple implementation of the classic Tic-Tac-Toe game using Blazor Web Assembly. This game offers an engaging and versatile experience, allowing you to challenge an AI opponent or compete with another player in the classic battle of X's and O's.
 
 ## Table of Contents
 
@@ -14,7 +14,7 @@ Welcome to the TicTacToe Blazor Web Assembly project! This is a simple implement
 
 ## Features
 
-- Play against an AI opponent.
+- Select your opponent: Choose between the strategic AI or a human competitor using the dedicated toggle button.
 - Interactive game board.
 - Real-time feedback on game status.
 
@@ -50,8 +50,10 @@ To get started with this TicTacToe Blazor Web Assembly project locally, follow t
 - You play as "X" and the AI opponent plays as "O".
 - Click on the empty cells of the game board to place your move.
 - The AI opponent will make its move automatically.
+- In two-player mode, you play an ordinary tic-tac-toe game
 - The game will automatically detect a win, loss, or draw and display the result.
 - To start a new game, click on the ResetGame button.
+- To switch between AI or two-player just click on the toggle button.
 
 ## Contributing
 
