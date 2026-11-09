@@ -1,0 +1,3 @@
+# Count Razor components as C# and keep the static styling out of the language stats
+*.razor linguist-language=C#
+wwwroot/** linguist-vendored
